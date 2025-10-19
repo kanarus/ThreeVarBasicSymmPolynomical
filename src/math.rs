@@ -88,7 +88,12 @@ impl<P: Polynomial> add_comm for P {
 impl<A: Term, B: Term> add_comm for Add<A, B> {
     type to = Add<B, A>;
 }
-pub fn add_comm
+impl<A: Term, B: Term> add_comm for Mul<A, B> {
+    type to = Mul<<A as add_comm>::to, <B as add_comm>::to>;
+}
+impl<P: Polynomial> add_comm for Parentheses<P> {
+    type to = Parentheses<<P as add_comm>::to>;
+}
 
 // a * b = b * a
 impl<A: Term, B: Term>
