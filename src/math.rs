@@ -30,14 +30,14 @@ impl<P: Polynomial> Term for Parentheses<P> {}
 
 pub trait EquivalentTo<P: Polynomial, const ID: usize>: Polynomial {}
 
-// reflexive
+// reflexivity
 impl<P: Polynomial> EquivalentTo<P, 0> for P {}
 
-// symmetric
+// symmetricity
 impl<P1: Polynomial, P2: Polynomial> EquivalentTo<P2, 1> for P1
 where P2: EquivalentTo<P1, 2> {}
 
-// transitive
+// transitivity
 /*
 [can't compile]
 the type parameter P1 is not constrained by the impl trait, self type, or predicates
@@ -77,10 +77,18 @@ where
     L1: EquivalentTo<L2, 13>,
 {}
 
-// a + b = b + a
-impl<A: Term, B: Term>
-EquivalentTo<Add<B, A>, 14> for Add<A, B>
-{}
+// // a + b = b + a
+// impl<A: Term, B: Term>
+// EquivalentTo<Add<B, A>, 14> for Add<A, B>
+// {}
+pub trait add_comm { type to: Polynomial; }
+impl<P: Polynomial> add_comm for P {
+    default type to = P;
+}
+impl<A: Term, B: Term> add_comm for Add<A, B> {
+    type to = Add<B, A>;
+}
+pub fn add_comm
 
 // a * b = b * a
 impl<A: Term, B: Term>
