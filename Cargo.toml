@@ -1,0 +1,13 @@
+[package]
+name          = "three_var_basic_symm_polynomical"
+version       = "0.1.0"
+edition       = "2024"
+authors       = ["kanarus <kanarus786@gmail.com>"]
+documentation = "https://docs.rs/ThreeVarBasicSymmPolynomical"
+homepage      = "https://crates.io/crates/ThreeVarBasicSymmPolynomical"
+repository    = "https://github.com/kanarus/ThreeVarBasicSymmPolynomical"
+readme        = "README.md"
+license       = "MIT"
+description   = ""
+keywords      = []
+categories    = []
